@@ -15,14 +15,23 @@ HashMap是由数组加上链表的数据结构书写的,它使用key-value键值
 
 下面是几个比较重要的参数
 > static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; //数组的默认长度,16
+
 > static final float DEFAULT_LOAD_FACTOR = 0.75f;//默认的加载因子0.75
+
 > static final int MAXIMUM_CAPACITY = 1 << 30;//数组的最大长度 2的30次方(1073741824)
+
 > static final Entry<?,?>[] EMPTY_TABLE = {};
+
 > transient Entry<K,V>[] table = (Entry<K,V>[]) EMPTY_TABLE;//`table'`用来存放数据的位置
+
 > transient int size; // 存放的键值对的数量大小,Entry的数量
+
 > int threshold;//桶(bucket)的大小，可在初始化时显式指定
+
 > final float loadFactor;//加载因子，可在初始化时显式指定。
+
 > transient int modCount;//修改的次数,用于fail-fast机制
+
 
 这个数组的默认长度为16,默认加载因子为0.75,数组里面的每一个值初始化的时候默认为null.当桶中总的键值对(Entry)的数量达到`capacity` *  `loadFactor`
 的大小时,数组就会扩容,第一次扩容发生在数组中Entry数量为16*0.75f=12时.每次扩容都会使得数组的容量变为原来的两倍.这两个参数在创建HashMap对象的时候
