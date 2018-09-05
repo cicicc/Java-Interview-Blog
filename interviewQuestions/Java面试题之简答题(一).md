@@ -200,9 +200,6 @@ class Other{
 (未完待续.....)
 
 
-欢迎关注我的博客以及公众号,才刚刚开始写博客,希望以后会更好!
-![imagepng](http://pcg4drw32.bkt.clouddn.com//file/2018/09/56d3687bd2084ee5a24d16ce91580492_image.png) 
-
 
 
 
