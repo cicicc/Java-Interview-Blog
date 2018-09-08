@@ -8,7 +8,6 @@
 > [ArrayList/Vector源码解读](https://github.com/cicicc/Java-Interview-Blog/blob/master/javase/HashMap%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB.md)
 
 > [LinkedList源码解读](https://github.com/cicicc/Java-Interview-Blog/blob/master/javase/LinkedList%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.md)
-> [ArrayList/Vector源码解读](https://github.com/cicicc/Java-Interview-Blog/blob/master/javase/ArrayList-Vector%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB.md)
 
 > [高并发下的HashMap](https://github.com/cicicc/Java-Interview-Blog/blob/master/javase/%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8B%E7%9A%84HashMap.md)
 ## 算法
