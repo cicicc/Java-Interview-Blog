@@ -3,7 +3,7 @@
 ## 引言
 对于Java程序员而言,集合类框架是必须要掌握的,笔者前一段时间被问到了一个关于ArrayList如何在遍历list时删除特定元素的问题,当时没有立即回答上来.随后想起,还是看源码看的太少了,所以就有了这一篇关于ArrayList的解读.
 那么在进行这篇文章的阅读之前,也希望读者们能够把这个问题思考一下,看看自己是否已经有了问题的答案吧!
-```
+```Java
 以下代码打印列表中的偶数项,并将其移除,是否有问题? 
 public void errorRemove(){
         List<Integer> list = new ArrayList<>();
@@ -43,7 +43,7 @@ ArrayList中的参数如下
 #### add(E element)
 `add(E e)`方法为在数组插入对象,源码如下:
 
-```
+```Java
     public boolean add(E e) {
         ensureCapacityInternal(size + 1);  // 确定数组中是否有多余的空间以供添加元素,并增加modCount
         elementData[size++] = e;
@@ -56,7 +56,7 @@ ArrayList中的参数如下
 
 #### add(int index, E element)
 `add(index,e)`方法为在指定位置插入对象,源码如下:
-```
+```Java
     public void add(int index, E element) {
         rangeCheckForAdd(index);
 
@@ -74,7 +74,7 @@ ArrayList中的参数如下
 - 接着对数据进行复制，目的是把 index 位置空出来放本次插入的数据，并将后面的数据向后移动一个位置。
 
 其实扩容最终调用的代码是类中的`grow(int)`方法:
-```
+```Java
     private void grow(int minCapacity) {
         // overflow-conscious code
         int oldCapacity = elementData.length;
@@ -98,7 +98,7 @@ grow方法进行的是一个数组复制的过程:
 
 #### get(int index)
 获取指定位置的对象
-```
+```Java
  public E get(int index) {
         rangeCheck(index);//校验index是否在数组的长度范围内
 
@@ -109,7 +109,7 @@ grow方法进行的是一个数组复制的过程:
 
 #### set(int index, E element)
 替换指定位置的对象
-```
+```Java
     public E set(int index, E element) {
         rangeCheck(index);
 
@@ -121,7 +121,7 @@ grow方法进行的是一个数组复制的过程:
 
 #### remove(Object o)
 根据对象内容移除数组中指定对象
-```
+```Java
  public boolean remove(Object o) {
         if (o == null) {
             for (int index = 0; index < size; index++)
@@ -143,11 +143,11 @@ grow方法进行的是一个数组复制的过程:
 
 由于 ArrayList 是基于动态数组实现的，所以并不是所有的空间都被使用。如果被自动序列化的话就会抛出异常.因此使用了 `transient` 修饰，可以防止被自动序列化。又`自定义了writeObject和readObject`方法,,JVM会调用类中的这两个方法实现对象序列化与方序列化时.
 
-```
+```Java
 transient Object[] elementData;
 ```
 
-```
+```Java
     private void writeObject(java.io.ObjectOutputStream s)
         throws java.io.IOException{
         // Write out element count, and any hidden stuff
@@ -220,7 +220,7 @@ ArrayList实际上是非线程安全的,`在多个线程进行add操作时可能
 
 ### add(E e)
 以下是 Vector的`add(E e)` 方法源码,主要就是在方法上加上了`synchronized`关键字：
-```
+```Java
     public synchronized boolean add(E e) {
         modCount++;
         ensureCapacityHelper(elementCount + 1);
@@ -230,7 +230,7 @@ ArrayList实际上是非线程安全的,`在多个线程进行add操作时可能
 ```
 ### add(int index, E element)
 以及在指定位置插入数据:
-```
+```Java
     public void add(int index, E element) {
         insertElementAt(element, index);
     }

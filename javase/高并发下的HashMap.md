@@ -16,7 +16,7 @@
 > addEntry(hash, key, value, i);
  
  addEntry的实现如下:
- ```
+```java
    void addEntry(int hash, K key, V value, int bucketIndex) {
 	//判断当前map中键值对的数目是否大于阈值
 	//并且插入的键值对所对应数组位置已经存在了键值对
@@ -29,7 +29,6 @@
         }
         createEntry(hash, key, value, bucketIndex);
     }
- 
  ```
  由源码可知,当map中键值对的数目大于阈值,并且新插入的键值对,其所对应的数组位置已经存在了键值对,那么就会进行resize操作.resize的操作分为以下几个步骤:
 1.创建一个新的数组,新数组的容量是旧数组容量的2倍(判断数组的容量是否大于MAXIMUM_CAPACITY此处不做过多介绍)
@@ -37,7 +36,7 @@
 3. 给table和threshold(阈值)赋新值
 
 源代码如下:
- ```
+ ```java
     void resize(int newCapacity) {
         Entry[] oldTable = table;
         int oldCapacity = oldTable.length;
@@ -60,7 +59,7 @@
  
  
  
- ```  
+```java
     /**
      * Transfers all entries from current table to newTable.
      */

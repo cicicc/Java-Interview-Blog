@@ -46,7 +46,7 @@ f(1)=1,为2的0次方,也满足上式,所以`上式为通式`,
 ###代码(Java书写)
 由此写出的代码如下:
 
-```
+```java
   
 public Integer jumpFloor(int n) {
   if (n <= 0) {

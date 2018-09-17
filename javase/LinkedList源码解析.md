@@ -24,7 +24,7 @@
 ### add(E e)
 
 将元素插入`链表末尾`
- ```
+ ```Java
  public boolean add(E e) {
         linkLast(e);// 将元素插入 ` 链表末尾 `
         return true;
@@ -47,7 +47,7 @@
 ### add(int index, E element)
 
 将元素插入`链表指定位置`
-```
+```Java
   public void add(int index, E element) {
         checkPositionIndex(index);
 
@@ -85,7 +85,7 @@
 
 获取指定索引的元素
 
-```
+```Java
 public E get(int index) {
         checkElementIndex(index);
         return node(index).item;
@@ -113,7 +113,7 @@ public E get(int index) {
 
 `peek()`方法和`poll()`是如果 list 中的`开始节点`, 但`peek()`方法不会将节点从链表中移除, 而`poll()`方法会.
 
-```
+```Java
 public E peek() {
    final Node<E> f = first;
    return (f == null) ? null : f.item;
@@ -128,7 +128,7 @@ public E poll() {
 其余方法如`writeObject(),``readObject()`方法与`ArrayList`中的方法类似, 此处不做过多介绍.
 
 ## 最后的思考题
-```
+```Java
 现有一个LinkedList类型的list,其中含有顺序[1....100000]个元素(10w),现在要打印后10000个元素,如下操作方式会有什么方面的问题? 
 for(int i = 90000; i<list.size(); i++){
     System.out.println(list.get(i)); 

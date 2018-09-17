@@ -40,7 +40,7 @@ HashMap是由数组加上链表的数据结构书写的,它使用key-value键值
 对于HashMap我们最常用的两个方法就是<strong>put</strong>和<strong>get</strong>
 #### put
 jdk7中的源码如下
-```
+```java
     public V put(K key, V value) {
 	//如果此时的table仍旧为初始化时的EMPTY_TABLE(空数组)的话,就对其进行初始化扩容
         if (table == EMPTY_TABLE) {
@@ -88,7 +88,7 @@ jdk7中的源码如下
 如果hash值不同的话,就会将数据插入新的原先的Entry位置,并指向于原先的Entry.在jdk7的HashMap中,同一个位置中后插入的数据一定在先插入数据的前面,
 因为HashMap的代码书写者认为后插入的数据比先插入的数据更有可能被使用.
 注:在下图中省去了一个指针没有画出来,实际上在Entry这个内部类的定义中有一个指针,代码如下
-```
+```java
 static class Entry<K,V> implements Map.Entry<K,V> {
         final K key;
         V value;
@@ -100,7 +100,7 @@ static class Entry<K,V> implements Map.Entry<K,V> {
 #### get
 
 jdk7中的源码如下
-```   
+```java
 public V get(Object key) {
 	
         if (key == null)
@@ -112,7 +112,7 @@ public V get(Object key) {
 ```
 get方法首先进行判断key是否为null,如果对应的键为null的话,就调用getForNullKey查询方法,直接去table[0]的位置查找有无键为null的Entry.
 如果键不为零的话那么就调用getEntry方法,getEntry的源码如下:
-```
+```java
  final Entry<K,V> getEntry(Object key) {
 	//首先判断Entry的数量是否为零,为零就不用查找了,直接返回null
         if (size == 0) {
@@ -163,7 +163,7 @@ UNTREEIFY_THRESHOLD时,数据结构就会又变回链表结构.
 #### put 
   下面我们来看一下put的源码
 
-```
+```java
 public V put(K key, V value) {
     return putVal(hash(key), key, value, false, true);
 }
@@ -231,7 +231,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 #### resize
   在jdk7代码的解说中,我并没有详细介绍resize的代码,在这里我进行解说一下,二者的实现方法大致相同,理解其中一个就可以了
 
-```
+```java
 final Node<K,V>[] resize() {
     Node<K,V>[] oldTab = table;
     int oldCap = (oldTab == null) ? 0 : oldTab.length;
@@ -322,7 +322,7 @@ final Node<K,V>[] resize() {
 #### get
   对于get方法,此处不做详细介绍,主要要读者们记住的就是,在get操作的时候,会判断是否是采用红黑树存储键值对数据,我们根据数组元素中，
   第一个节点数据类型是 Node 还是 TreeNode 来判断该位置下是链表还是红黑树的。两者采用的读取方式不同。源码附上:
-```
+```java
 
 final Node<K,V> getNode(int hash, Object key) {
         Node<K,V>[] tab; Node<K,V> first, e; int n; K k;

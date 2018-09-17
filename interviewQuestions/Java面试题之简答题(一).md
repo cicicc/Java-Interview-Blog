@@ -5,7 +5,7 @@
 ### 题目一 高并发下的SimpleDateFormat
 
 #### 题目内容
-```
+```Java
 在一个有较大并发量的系统中,有人在某个公共类中书写了如下方法:
 
 public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
@@ -20,7 +20,7 @@ public static String formatDate(Date date) {
 
 #### 题目解析
 当高并发情况下,多个线程调用了formatDate方法,可能会出现`NumberFormatException`这个异常,我们使用如下代码进行测试
-```
+```Java
  private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         public static void main(String[] args) throws InterruptedException {
@@ -44,7 +44,7 @@ public static String formatDate(Date date) {
 
 ```
 报错:
-```
+```Java
 java.lang.NumberFormatException: For input string: ""
 	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
 	at java.lang.Long.parseLong(Long.java:601)
@@ -73,7 +73,7 @@ java.lang.NumberFormatException: For input string: ""
 ### 题目二 LinkedList下的错误操作
 
 #### 题目内容
-```
+```JavaJava
 现有一个LinkedList类型的list,其中含有顺序[1....100000]个元素(10w),现在要打印后10000个元素,如下操作方式会有什么方面的问题?
 for(int i = 90000; i<list.size(); i++){
     System.out.println(list.get(i));
@@ -83,7 +83,7 @@ for(int i = 90000; i<list.size(); i++){
 #### 题目解析
 大家都知道LinkedList的数据结构是基于双向链表的,当我们使用get方法时,会首先判断查找元素的索引是否大于1/2size.如果大于则从最后一个元素处开始向前查询,否则从第一个元素处开始向后查询
 
-```
+```Java
  if (index < (size >> 1)) {
             Node<E> x = first;
             for (int i = 0; i < index; i++)
@@ -100,7 +100,7 @@ for(int i = 90000; i<list.size(); i++){
 #### 解决方法 
 
 `使用get的效率是很低下的`,不建议使用get方法获取大量的连续的LinkedList数据,推荐使用迭代器或者增强for循环(本质就是迭代器),在这一题中,可使用LinkedList自带的如下方法:
-```
+```Java
 ListIterator<Integer> iterator = list.listIterator(90000);
    while (iterator.hasNext()) {
        System.out.println(iterator.next());
@@ -110,7 +110,7 @@ ListIterator<Integer> iterator = list.listIterator(90000);
 ### 题目三 空间复杂度o(1)下的移除ArrayList中的偶数项
 
 #### 题目内容
-```
+```Java
 以下代码打印列表中的偶数项,并将其移除,是否有问题?
  public void removeElement(){
         List<Integer> list = new ArrayList<>();
@@ -132,7 +132,7 @@ ArrayList是基于类中定义的一个变量`modCount`实现的`fail-fast`机�
 
 #### 解决方法
 在ArrayList类中提供了迭代器,使用其自带的迭代器进行遍历时移除就不会出错了.代码如下:
-```
+```Java
 
   Iterator<Integer> iterator = list.iterator();
         while (iterator.hasNext()) {
@@ -146,7 +146,7 @@ ArrayList是基于类中定义的一个变量`modCount`实现的`fail-fast`机�
 
 ### 题目四 字符串的"=="和"equals"
 #### 题目内容
-```
+```Java
 写出如下方法调用的输出结果
 
 String s1 = "hello";
@@ -167,7 +167,7 @@ if (s1 == s3) {
 ### 题目五 final修饰变量的不可变性
 
 #### 题目内容
-```
+```JavaJava
 下列方法在执行时是否会出现什么问题,为什么?
 public int addOne(final int x) {
   return x++;
@@ -178,7 +178,7 @@ public int addOne(final int x) {
 
 #### 题目扩展
 当有如下的程序时,请问代码执行是否会出现问题?
-```
+```Java
 public class FinalTest {
 
   public static void main(String[] args) {

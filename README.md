@@ -1,5 +1,5 @@
 # Java-Interview-Blog
-一个学习Java的人的博客,不止局限于面试相关问题,希望未来会更好
+作为一个程序员,我觉得
 
 ## jdk源码阅读
 
@@ -15,7 +15,7 @@
 
 >[剑指offer原题--青蛙跳台阶变化问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/jumpfloor.md)
 
->[常考算法题总结(一)](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/jumpfloor.md)
+>[常考算法题总结(一)](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%A2%98%E7%BB%83%E4%B9%A0(%E4%B8%80).md)
 
 ## 面试题
 
