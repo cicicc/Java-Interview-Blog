@@ -19,7 +19,9 @@
 
 >[剑指offer原题--青蛙跳台阶变化问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/jumpfloor.md)
 
->[常考算法题总结(一)](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%A2%98%E7%BB%83%E4%B9%A0(%E4%B8%80).md)
+>[面试常考算法题(一)--四种排序方法以及小和问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%A2%98%E7%BB%83%E4%B9%A0(%E4%B8%80).md)
+>[面试常考算法题(二)--荷兰国旗问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/jumpfloor.md)
+
 
 本文包括:
 - 冒泡排序,选择排序,插入排序源码
