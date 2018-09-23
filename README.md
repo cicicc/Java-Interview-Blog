@@ -25,6 +25,9 @@
 
 >[面试常考算法题(二)--荷兰国旗问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%AE%97%E6%B3%95%E9%A2%98(%E4%BA%8C)--%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98.md)
 
+>[面试常考算法题(三)--快速排序](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%AE%97%E6%B3%95%E9%A2%98(%E4%BA%8C)--%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98.md)
+
+
 ## 面试题
 
 ### 简答题
