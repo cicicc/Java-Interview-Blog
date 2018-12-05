@@ -20,6 +20,8 @@
 
 ## MySQL详解--基于innoDB引擎
 
+>[MySQL解密系列（一）：MySQL数据库架构浅解](https://github.com/cicicc/Java-Interview-Blog/blob/master/mysql/MySQL%E8%A7%A3%E5%AF%86%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AMySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84%E6%B5%85%E8%A7%A3.md)
+
 ## Spring源码笔记
 
 ## Mybatis源码笔记
