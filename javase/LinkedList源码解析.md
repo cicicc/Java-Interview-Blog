@@ -6,9 +6,9 @@
 
 ### LinkedList 数据结构
 
-![](http://pcg4drw32.bkt.clouddn.com/file/2018/09/ed3f89bd227b4e6d83156f4a555ed044_image.png)
+![](http://qiniuyun.indispensable.cn/file/2018/09/ed3f89bd227b4e6d83156f4a555ed044_image.png)
 
-![](http://pcg4drw32.bkt.clouddn.com/file/2018/09/e8a1a2a4b08c499b95b22a9f64cefc94_image.png)
+![](http://qiniuyun.indispensable.cn/file/2018/09/e8a1a2a4b08c499b95b22a9f64cefc94_image.png)
 
 如上图所示 `LinkedList` 底层是基于`双向链表`实现的, 其中 LinkedList 的头结点不存放数据, 仅存放指针.
 

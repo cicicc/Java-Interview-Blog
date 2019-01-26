@@ -39,7 +39,7 @@
 
 ## 方法
 内部的方法有以下几个:
-![imagepng](http://pcg4drw32.bkt.clouddn.com//file/2018/09/962eb06747684733944d91dd2850a9a2_image.png) 
+![imagepng](http://qiniuyun.indispensable.cn//file/2018/09/962eb06747684733944d91dd2850a9a2_image.png) 
 
 我们选择其中的一部分进行源码分析.
 

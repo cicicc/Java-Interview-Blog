@@ -1,6 +1,3 @@
-
-# 记一道很有意思的算法题---青蛙跳台阶问题
-
 ![](https://img.hacpai.com/bing/20180511.jpg?imageView2/1/w/960/h/520/interlace/1/q/100) 
 
 
@@ -13,7 +10,7 @@
 
 如果哪位路过的朋友觉得这道题比较有意思的话可以暂时先不看下面的分析,自己先尝试一下写这道题.
 
-![一张用来挡视线的图](http://pcg4drw32.bkt.clouddn.com//file/2018/07/ef124f3764b445f0b8df44848e4dad86_image.png) 
+![一张用来挡视线的图](http://qiniuyun.indispensable.cn//file/2018/07/ef124f3764b445f0b8df44848e4dad86_image.png) 
 
 
 
@@ -22,14 +19,14 @@
 在看到这个题目后,首先想到的应该是斐波那契数列的变形,那么思考这个问题应该从斐波那契数列的方向上着手.
 当n=1时,f(n)=1,当n>2时,可以从以下角度进行考虑,青蛙最后一次上台阶可能是跳了1-n中任意一个数的台阶.
 如果青蛙最后一步是跳了1个台阶的话,那么前面的n-1个台阶的跳法就有`f(n-1)`种,如下图:
-![最后一步跳一个台阶=f(n-1)](http://pcg4drw32.bkt.clouddn.com//file/2018/07/595f6191336846b78755afccd7cb57cd_image.png) 
+![最后一步跳一个台阶=f(n-1)](http://qiniuyun.indispensable.cn//file/2018/07/595f6191336846b78755afccd7cb57cd_image.png) 
 
 
 如果青蛙最后一步跳了2个台阶的话,那么前面的n-2个台阶的跳法就有`f(n-2)`种,如下图:
-![最后一步跳一个台阶=f(n-2)](http://pcg4drw32.bkt.clouddn.com//file/2018/07/15d28b6e6633463baf18a5c8e03f8d57_image.png) 
+![最后一步跳一个台阶=f(n-2)](http://qiniuyun.indispensable.cn//file/2018/07/15d28b6e6633463baf18a5c8e03f8d57_image.png) 
 依次类推青蛙最后一步跳了n-1个台阶的话,那么前面的1个台阶跳法等于`f(1)`,
 除此之外还有一种情况就是青蛙一步从最低端跳到了最高点,也就是一步跳了n个台阶,在之前方法数目的基础上再次加`1`
-![假装四级台阶是很大的n](http://pcg4drw32.bkt.clouddn.com//file/2018/07/99663babea6e4b239ac61cc41ba67366_image.png) 
+![假装四级台阶是很大的n](http://qiniuyun.indispensable.cn//file/2018/07/99663babea6e4b239ac61cc41ba67366_image.png) 
 所以跳到n级台阶的方法就有
 >  f(n)=f(n-1)+f(n-2)....+f(1)+1
 
@@ -40,13 +37,13 @@
 >  f(n)-f(n-1)=f(n-1)
 
 即`f(n)=2f(n-1)`,又因为f(1)=1,当n>=2时有
-![通式](http://pcg4drw32.bkt.clouddn.com//file/2018/07/f67c50fb39184ef6abd8c06aa3ffa723_image.png) 
+![通式](http://qiniuyun.indispensable.cn//file/2018/07/f67c50fb39184ef6abd8c06aa3ffa723_image.png) 
 f(1)=1,为2的0次方,也满足上式,所以`上式为通式`,
 
-###代码(Java书写)
+###代码(Java)
 由此写出的代码如下:
 
-```java
+```
   
 public Integer jumpFloor(int n) {
   if (n <= 0) {
@@ -68,7 +65,6 @@ public Integer jumpFloor(int n) {
 
 当然在这一题里面,我指定 -Xss1m,栈溢出的时候所求的n已经大于9000了,数据早就已经超过int的范围了.感兴趣的读者可以使用BigInteger重写一下代码.
 
-我水平不高,希望看到的朋友不要喷我啊.`有Java实习工作的也可以联系我啊`嘿嘿嘿.
 
 
 
