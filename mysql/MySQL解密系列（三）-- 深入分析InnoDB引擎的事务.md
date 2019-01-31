@@ -73,12 +73,12 @@ MySQL 本身不提供事务支持，而是开放了存储引擎接口，由具�
 2.  更新数据记录，缓存操作并异步刷盘。
 3.  将事务日志持久化到 binlog。
 4.  提交事务，在 redo log 中写入commit记录。
-<htnl>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</html>![imagepng](http://pcg4drw32.bkt.clouddn.com//file/2018/11/985eae844b274c7e8d33a2025c7c36a3_image.png) 
+<htnl>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</html>![imagepng](http://qiniuyun.indispensable.cn//file/2018/11/985eae844b274c7e8d33a2025c7c36a3_image.png) 
 可能有读者会感觉到疑惑，为什么没有进行写入data file,事务就这样提交了？其实在数据库中，可以这么说--有了日志就有了一切。并且日志是顺序写，而写入data file是随机写，顺序写的性能优于随机写。
 由于需要保持binlog和redo log的一致性，只要 binlog 没写成功，整个事务是需要回滚的，而 binlog 写成功后即使 MySQL Crash 了都可以恢复事务并完成提交。
 
 在这里对发生冲突的解决做一个简单的分析：
-<htnl>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</html>![imagepng](http://pcg4drw32.bkt.clouddn.com//file/2018/11/5c7ec51ac7ca49cd9cd429b0f2be9fbb_image.png) 
+<htnl>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</html>![imagepng](http://qiniuyun.indispensable.cn//file/2018/11/5c7ec51ac7ca49cd9cd429b0f2be9fbb_image.png) 
    1. 当在写入bin log 之前系统出现错误或者崩溃时,重启恢复后发现没有commit，使用undo/redo log回滚事务，此时没有binlog。binlog 和redolog保持了一致。
 	2. 当在commit之前系统出现错误或者崩溃，重启恢复后发现虽没有commit，但满足prepare阶段写入的redo日志和binlog都完整，所以重启后会自动commit。此时有binlog， binlog 和redolog保持了一致。
 
@@ -109,14 +109,14 @@ MySQL 本身不提供事务支持，而是开放了存储引擎接口，由具�
 1. 投票阶段（voting phase）：参与者将操作结果通知协调者；
 2. 提交阶段（commit phase）：收到参与者的通知后，协调者再向参与者发出通知，根据反馈情况决定各参与者是否要提交还是回滚；
   上面的偏向于官方的说法，读者可能无法快速进行理解，这里举一个实际的案例做一下说明：
-		 <html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</html> ![imagepng](http://pcg4drw32.bkt.clouddn.com//file/2018/11/b40f3031312b40ae8751a88af9414685_image.png) 
+		 <html>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</html> ![imagepng](http://qiniuyun.indispensable.cn//file/2018/11/b40f3031312b40ae8751a88af9414685_image.png) 
   当我们将支付宝的余额转账100块钱到余额宝中去，那么这个过程可以分为以下两个操作：
   
   1. 从支付宝的余额扣除100元
   2. 将余额宝中的余额增加100元
   
   那么我们怎么来实现这个事情呢？有人肯定会说，这个操作非常简单啊，只要使用事务就可以了。如果余额宝的数据库和支付宝余额的数据库位于同一个数据库的实例里面，那么这个事务就可以成功的执行，但是实际上不可能放在同一个数据库实例上，因为系统的规模较大时就会采用分布式，数据库往往位于不同的物理节点上面。这个时候，使用常规的本地事务就没有任何作用，那就需要使用到分布式事务。
-![imagepng](http://pcg4drw32.bkt.clouddn.com//file/2018/11/582524d9014443f7bad97e68a49ceb36_image.png) 
+![imagepng](http://qiniuyun.indispensable.cn//file/2018/11/582524d9014443f7bad97e68a49ceb36_image.png) 
 
  
 * 首先，当我们发起一个转账100元的请求时，将发送一个请求到TC（事务协调器），协调器来保证分布式事务的执行。
