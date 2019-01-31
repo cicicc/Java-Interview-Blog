@@ -12,7 +12,7 @@
   
  这两个词是非常容易被混淆的，在 MySQL 中，实例和数据库往往都是`一一对应`的，而我们也无法直接操作数据库，而是要通过数据库实例来操作数据库文件，可以理解为数据库实例是数据库为上层提供的一个专门用于操作的接口。
 
-![imagepng](http://piv1n6e1j.bkt.clouddn.com//file/2018/11/4250d9ee6503410db9acf9a333cb09fc_image.png) 
+![imagepng](http://qiniuyun2.indispensable.cn//file/2018/11/4250d9ee6503410db9acf9a333cb09fc_image.png) 
 在Windows系统上，启动一个MySQL实例只会产生一个进程。而在 Linux系统上，启动一个 MySQL 实例往往会产生两个进程--`mysqld`和`mysqld-safe`。`mysqld` 就是真正的数据库服务守护进程，而 `mysqld_safe` 是一个用于检查和设置 `mysqld` 启动的控制程序，它负责监控 MySQL 进程的执行，当 `mysqld` 发生错误时，`mysqld_safe` 会对其状态进行检查并在合适的条件下重启。
 
 
@@ -84,7 +84,7 @@ MySQL发展这么多年，已经非常的高效，内部具有自己的优化器
 
 在 InnoDB 存储引擎中，所有的数据都被**逻辑地**存放在表空间中。表空间（tablespace）是存储引擎中最高的存储逻辑单位，在表空间的下面又包括段（segment）、区（extent）、页（page）：
 
-![imagepng](http://piv1n6e1j.bkt.clouddn.com//file/2018/11/f9e6b1f91c9846f190c3e0011126250b_image.png) 
+![imagepng](http://qiniuyun2.indispensable.cn//file/2018/11/f9e6b1f91c9846f190c3e0011126250b_image.png) 
 
 同一个数据库实例的所有表空间都有相同的页大小；默认情况下，表空间中的页大小都为 16KB，当然也可以通过改变 `innodb_page_size` 选项对默认大小进行修改，需要注意的是不同的页大小最终也会导致区大小的不同：
 
@@ -96,7 +96,7 @@ MySQL发展这么多年，已经非常的高效，内部具有自己的优化器
 
 MySQL 使用 InnoDB 存储表时，会将**表的定义**和**数据索引**等信息分开存储。其中前者存储在 `.frm` 文件中，后者存储在 `.ibd` 文件中，这一节就会对这两种不同的文件分别进行介绍。
 
-![imagepng](http://piv1n6e1j.bkt.clouddn.com//file/2018/11/1a35b38976f340d68edafdd80c57b1a5_image.png) 
+![imagepng](http://qiniuyun2.indispensable.cn//file/2018/11/1a35b38976f340d68edafdd80c57b1a5_image.png) 
 
 
 
@@ -156,14 +156,14 @@ InnoDB 中用于存储数据的文件总共有两个部分，一是系统表空�
 
 当 InnoDB 存储数据时，它可以使用不同的行格式进行存储；MySQL 5.7 版本支持以下格式的行存储方式：
 
-![imagepng](http://piv1n6e1j.bkt.clouddn.com//file/2018/11/fe006fb7537b4eb79de32cfeea9ea517_image.png) 
+![imagepng](http://qiniuyun2.indispensable.cn//file/2018/11/fe006fb7537b4eb79de32cfeea9ea517_image.png) 
 
 
 
 > Antelope 是 InnoDB 最开始支持的文件格式，它包含两种行格式 Compact 和 Redundant，它最开始并没有名字；Antelope 的名字是在新的文件格式 Barracuda 出现后才起的，Barracuda 的出现引入了两种新的行格式 Compressed 和 Dynamic；InnoDB 对于文件格式都会向前兼容，而官方文档中也对之后会出现的新文件格式预先定义好了名字：Cheetah、Dragon、Elk 等等。
 
 两种行记录格式 Compact 和 Redundant 在磁盘上按照以下方式存储：
-![imagepng](http://piv1n6e1j.bkt.clouddn.com//file/2018/11/1d8052e0f76947528262cdfb5e2ea71b_image.png) 
+![imagepng](http://qiniuyun2.indispensable.cn//file/2018/11/1d8052e0f76947528262cdfb5e2ea71b_image.png) 
 
 
 
@@ -197,7 +197,7 @@ User Records 就是整个页面中真正用于存放行记录的部分，而 Fre
 
 B+ 树在查找对应的记录时，并不会直接从树中找出对应的行记录，它只能获取记录所在的页，将整个页加载到内存中，再通过 Page Directory 中存储的稀疏索引和 `n_owned`、`next_record` 属性取出对应的记录，不过因为这一操作是在内存中进行的，所以通常会忽略这部分查找的耗时。
 
-InnoDB 存储引擎中对数据的存储是一个非常复杂的话题，这一节中也只是对表、行记录以及页面的存储进行一定的分析和介绍，虽然作者相信这部分知识对于大部分开发者已经足够了，但是想要真正消化这部分内容还需要很多的努力和实践。
+InnoDB 存储引擎中对数据的存储是一个非常复杂的话题，这一节中也只是对表、行记录以及页面的存储进行一定的分析和介绍。
 
 
 ## 参考
@@ -212,6 +212,43 @@ InnoDB 存储引擎中对数据的存储是一个非常复杂的话题，这一�
 ## 小结
 
 在上文中，主要对MySQL的整体框架和数据的存储有了一个大致的介绍，在接下来的文章中，会深入MySQL的各个部件，在平时的工作中，我们也要学会将问题分类到所属的层次，并根据所属层次排查和解决问题。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
