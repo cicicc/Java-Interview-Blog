@@ -22,6 +22,10 @@
 
 >[MySQL解密系列（一）：MySQL数据库架构浅解](https://github.com/cicicc/Java-Interview-Blog/blob/master/mysql/MySQL%E8%A7%A3%E5%AF%86%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AMySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84%E6%B5%85%E8%A7%A3.md)
 
+>[MySQL解密系列（二）：innoDB引擎浅解析(上)](https://github.com/cicicc/Java-Interview-Blog/blob/master/mysql/MySQL%E8%A7%A3%E5%AF%86%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9AinnoDB%E5%BC%95%E6%93%8E%E6%B5%85%E8%A7%A3%E6%9E%90(%E4%B8%8A).md)
+
+
+>[MySQL解密系列（三）-- 深入分析InnoDB引擎的事务](https://github.com/cicicc/Java-Interview-Blog/blob/master/mysql/MySQL%E8%A7%A3%E5%AF%86%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89--%20%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90InnoDB%E5%BC%95%E6%93%8E%E7%9A%84%E4%BA%8B%E5%8A%A1.md)
 ## Spring源码笔记
 
 ## Mybatis源码笔记
