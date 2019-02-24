@@ -37,7 +37,7 @@
 
 >[剑指offer原题--青蛙跳台阶变化问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/jumpfloor.md)
 
->[面试常考算法题(一)--四种排序方法以及小和问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95%E9%A2%98%E7%BB%83%E4%B9%A0(%E4%B8%80).md)
+>[面试常考算法题(一)--四种排序方法以及小和问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%AE%97%E6%B3%95%E9%A2%98(%E4%B8%80)--%E5%9B%9B%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E5%B0%8F%E5%92%8C%E9%97%AE%E9%A2%98.md)
 
 >[面试常考算法题(二)--荷兰国旗问题](https://github.com/cicicc/Java-Interview-Blog/blob/master/algorithm/%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%AE%97%E6%B3%95%E9%A2%98(%E4%BA%8C)--%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98.md)
 
